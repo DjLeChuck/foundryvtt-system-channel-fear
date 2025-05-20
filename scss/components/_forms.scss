@@ -13,15 +13,14 @@ input, textarea {
 
   .editor {
     height: 100%;
-    padding: 0 20px;
 
-    .tox-tinymce {
-      height: 100% !important;
+    .editor-content {
+      padding: 0 20px;
     }
   }
 }
 
-.attribute-input {
+input.attribute-input {
   background-color: var(--c-white);
   border: 1px dotted var(--c-black);
   width: 50px;

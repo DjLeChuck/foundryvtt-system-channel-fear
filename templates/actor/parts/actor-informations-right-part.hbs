@@ -1,5 +1,5 @@
 <div class="flexcol stacked-blocks">
-  <div class="{{#unless isNpc}}flex0 {{/unless}}stacked-block health-block">
+  <div class="stacked-block health-block">
     <h1 class="block-title">{{localize "CF.CharacterSheet.Health.Title"}}</h1>
 
     <div class="block-content">
@@ -10,7 +10,7 @@
 
       <div class="block-content-inner u-relative">
         <input type="text" id="system.attributes.health" name="system.attributes.health"
-               value="{{system.attributes.health}}" data-dtype="Number" class="attribute-input" min="0" max="6" />
+               value="{{source.system.attributes.health}}" data-dtype="Number" class="attribute-input" min="0" max="6" />
 
         <ul class="small-info">
           <li>

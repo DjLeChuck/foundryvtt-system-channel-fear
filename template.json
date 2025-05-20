@@ -4,48 +4,12 @@
       "character",
       "npc"
     ],
-    "templates": {
-      "base": {
-        "keywords": "",
-        "abilities": {
-          "act": 1,
-          "kno": 1,
-          "bea": 1,
-          "for": 1,
-          "per": 1,
-          "imp": 1,
-          "knh": 1,
-          "fig": 1,
-          "sel": 1,
-          "aim": 1
-        },
-        "attributes": {
-          "health": 6
-        }
-      }
-    },
-    "character": {
-      "templates": [
-        "base"
-      ],
-      "notes": "",
-      "info": {
-        "profile": "",
-        "profdef": ""
-      },
-      "attributes": {
-        "health": 6,
-        "resource": 6,
-        "evolution": 0
-      }
-    },
-    "npc": {
-      "templates": [
-        "base"
-      ],
-      "biography": "",
-      "level": "weak"
-    }
+    "htmlFields": [
+      "biography",
+      "notes"
+    ],
+    "character": {},
+    "npc": {}
   },
   "Item": {
     "types": [

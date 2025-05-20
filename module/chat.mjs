@@ -6,7 +6,7 @@ export function addChatListeners(html) {
 }
 
 export function hideActionsButtons(html) {
-  const actionsContainer = html[0].querySelector('.channelfear.chat-actions');
+  const actionsContainer = html[0].querySelector('.channel-fear.chat-actions');
   if (!actionsContainer) {
     return;
   }

@@ -3,10 +3,10 @@
     {{localize "CF.Global.Weapons"}}
 
     {{#if editable}}
-      <a class="item-control item-create add-btn" title="{{localize "CF.CharacterSheet.Weapons.Add"}}"
-         data-type="weapon">
+      <button class="item-control add-btn" title="{{localize "CF.CharacterSheet.Weapons.Add"}}"
+         data-type="weapon" data-action="itemCreate">
         <i class="fas fa-plus"></i>
-      </a>
+      </button>
     {{/if}}
   </h1>
 
@@ -43,10 +43,10 @@
     {{localize "CF.Global.Items"}}
 
     {{#if editable}}
-      <a class="item-control item-create add-btn" title="{{localize "CF.CharacterSheet.Items.Add"}}"
-         data-type="item">
+      <button class="item-control add-btn" title="{{localize "CF.CharacterSheet.Items.Add"}}"
+         data-type="item" data-action="itemCreate">
         <i class="fas fa-plus"></i>
-      </a>
+      </button>
     {{/if}}
   </h1>
 

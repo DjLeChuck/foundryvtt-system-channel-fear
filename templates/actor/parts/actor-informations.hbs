@@ -1,4 +1,4 @@
-<div class="basic-informations flexrow">
+<div class="tab basic-informations flexrow {{tabs.informations.id}} {{tabs.informations.cssClass}}" data-group="sheet" data-tab="informations">
   <div class="flex2">
     <div class="flexrow block-content-inner">
       <div class="flex2 informations-container">
@@ -34,7 +34,7 @@
       {{#if (displayProfileImage)}}
         <div>
           <div class="profile-img-container">
-            <img class="profile-img" src="{{actor.img}}" data-edit="img" alt="" title="{{actor.name}}" />
+            <img class="profile-img" src="{{actor.img}}" data-action="editImage" data-edit="img" alt="" title="{{actor.name}}" />
           </div>
         </div>
       {{/if}}

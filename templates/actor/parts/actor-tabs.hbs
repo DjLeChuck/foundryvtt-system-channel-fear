@@ -1,0 +1,8 @@
+<nav class="tabs tabs-nav" data-group="primary">
+  {{#each tabs as |tab|}}
+    <a class="item block-title {{tab.id}} {{tab.cssClass}}" data-action="tab" data-group="{{tab.group}}"
+       data-tab="{{tab.id}}">
+      {{localize tab.label}}
+    </a>
+  {{/each}}
+</nav>

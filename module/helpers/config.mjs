@@ -1,5 +1,7 @@
 export const CF = {};
 
+CF.SYSTEM_ID = 'channel-fear';
+
 CF.maxHealth = 6;
 CF.maxResource = 6;
 CF.maxAbility = 6;

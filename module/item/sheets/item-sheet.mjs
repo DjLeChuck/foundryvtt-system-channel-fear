@@ -1,7 +1,7 @@
 export class ChannelFearItemSheet extends ItemSheet {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      classes: ['channelfear', 'sheet', 'item'],
+      classes: ['channel-fear', 'sheet', 'item'],
       submitOnChange: false,
       width: 480,
       height: 204,

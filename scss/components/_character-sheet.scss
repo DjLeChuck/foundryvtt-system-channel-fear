@@ -73,7 +73,13 @@
 
   .add-btn {
     float: right;
-    padding-right: 5px;
+    padding: 0 5px 0;
+    border: none;
+    background: none;
+    color: var(--c-white);
+    display: block;
+    min-height: auto;
+    height: auto;
   }
 
   .block-title {
@@ -148,7 +154,7 @@
     }
   }
 
-  .character {
+  &.character {
     .health-block {
       padding-bottom: 30px;
       margin-bottom: -25px;

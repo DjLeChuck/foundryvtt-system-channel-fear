@@ -18,7 +18,7 @@
 </div>
 
 {{#if reroll.can}}
-  <div class="channelfear chat-actions" data-actor-id="{{actorId}}">
+  <div class="channel-fear chat-actions" data-actor-id="{{actorId}}">
     <button type="button" class="rollable reroll" data-difficulty="{{difficulty}}" data-bonus="{{total}}"
             data-reroll-usable="{{reroll.usable}}" data-reroll-available="{{reroll.available}}"
             data-type="{{reroll.type}}" data-label="{{reroll.label}}" data-actor-id="{{actorId}}">
@@ -29,7 +29,7 @@
 {{/if}}
 
 {{#if success}}{{#if weapon}}
-  <div class="channelfear chat-actions" data-actor-id="{{actorId}}">
+  <div class="channel-fear chat-actions" data-actor-id="{{actorId}}">
     <button type="button" class="rollable use-weapon" data-actor-id="{{actorId}}" data-label="{{weapon.name}}"
             data-reroll="{{weapon.system.reroll}}" data-dice="{{weapon.system.category}}">
       <i class="fas fa-fist-raised"></i>

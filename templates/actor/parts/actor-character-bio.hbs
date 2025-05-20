@@ -1,0 +1,11 @@
+<div class="tab {{tabs.bio.id}} {{tabs.bio.cssClass}}" data-group="sheet" data-tab="bio">
+  <div class="flex2">
+    <h1 class="block-title no-radius">{{localize "CF.CharacterSheet.Biography"}}</h1>
+
+    <div class="wysiwyg-container">
+      {{formInput fields.biography name="system.biography"  value=system.biography enriched=enrichedBiography toggled=true}}
+    </div>
+  </div>
+
+  {{> "systems/channel-fear/templates/actor/parts/actor-evolution.hbs"}}
+</div>

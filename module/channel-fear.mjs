@@ -1,9 +1,8 @@
 import '../scss/channel-fear.scss';
 
-import { ChannelFearActor } from './documents/actor.mjs';
-import { ChannelFearItem } from './documents/item.mjs';
-import { ChannelFearActorSheet } from './sheets/actor-sheet.mjs';
-import { ChannelFearItemSheet } from './sheets/item-sheet.mjs';
+import * as actor from './actor/_module.mjs';
+import { ChannelFearItem } from './item/documents/item.mjs';
+// import { ChannelFearItemSheet } from './item/sheets/item-sheet.mjs';
 import { preloadHandlebarsTemplates } from './helpers/templates.mjs';
 import { registerSettings } from './helpers/settings.mjs';
 import { CF } from './helpers/config.mjs';
@@ -14,15 +13,14 @@ Hooks.on('init', function () {
   console.log('Channel Fear | Initializing System');
 
   game.channelfear = {
-    ChannelFearActor,
-    ChannelFearItem,
     rollItemMacro,
   };
 
   CONFIG.CF = CF;
 
-  CONFIG.Actor.documentClass = ChannelFearActor;
   CONFIG.Item.documentClass = ChannelFearItem;
+  CONFIG.Actor.dataModels.character = actor.models.CharacterDataModel;
+  CONFIG.Actor.dataModels.npc = actor.models.NpcDataModel;
 
   CONFIG.fontDefinitions['MuseoSlab'] = {
     editor: true,
@@ -39,22 +37,32 @@ Hooks.on('init', function () {
   CONFIG.canvasTextStyle.fontFamily = 'MuseoSlab';
   CONFIG.defaultFontFamily = 'MuseoSlab';
 
-  Actors.unregisterSheet('core', ActorSheet);
-  Actors.registerSheet('channelfear', ChannelFearActorSheet, { makeDefault: true });
-  Items.unregisterSheet('core', ItemSheet);
-  Items.registerSheet('channelfear', ChannelFearItemSheet, { makeDefault: true });
+  const sheets = foundry.applications.apps.DocumentSheetConfig;
+  sheets.unregisterSheet(Actor, 'core', foundry.appv1.sheets.ActorSheet);
+  sheets.registerSheet(Actor, CONFIG.CF.SYSTEM_ID, actor.sheets.CharacterActorSheet, {
+    types: ['character'],
+    makeDefault: true,
+  });
+  sheets.registerSheet(Actor, CONFIG.CF.SYSTEM_ID, actor.sheets.NpcActorSheet, {
+    types: ['npc'],
+    makeDefault: true,
+  });
+  sheets.unregisterSheet(Item, 'core', foundry.appv1.sheets.ItemSheet);
+  // sheets.registerSheet(Item, CONFIG.CF.SYSTEM_ID, ChannelFearItemSheet, { makeDefault: true });
 
   registerHandlebarsHelper();
   registerSettings();
-  preloadHandlebarsTemplates();
+  // preloadHandlebarsTemplates();
 });
 
 Hooks.once('ready', async function () {
-  if ('fr' !== game.i18n.lang && game?.babele) {
-    game.babele.setSystemTranslationsDir('lang/packs/translations');
-  }
-
   Hooks.on('hotbarDrop', (bar, data, slot) => createItemMacro(data, slot));
+});
+
+Hooks.once('babel.init', (babele) => {
+  if ('fr' !== game.i18n.lang) {
+    babele.setSystemTranslationsDir('lang/packs/translations');
+  }
 });
 
 Hooks.on('renderChatMessage', (app, html, data) => {

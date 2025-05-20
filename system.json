@@ -4,8 +4,8 @@
   "description": "The Channel Fear system for FoundryVTT",
   "version": "#{VERSION}#",
   "compatibility": {
-    "minimum": 11,
-    "verified": "12.328"
+    "minimum": 13,
+    "verified": "13.344"
   },
   "flags": {
     "hotReload": {
@@ -71,7 +71,7 @@
         "id": "babele",
         "type": "module",
         "compatibility": {
-          "verified": "2.5.0"
+          "verified": "2.7.1"
         }
       }
     ]

@@ -1,4 +1,4 @@
-import * as Dice from '../dice.mjs';
+import * as Dice from '../../dice.mjs';
 
 export class ChannelFearItem extends Item {
   prepareDerivedData() {
