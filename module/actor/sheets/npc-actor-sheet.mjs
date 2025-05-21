@@ -17,4 +17,14 @@ export default class NpcActorSheet extends BaseActorSheet {
     this.TABS.sheet[1].label = 'CF.CharacterSheet.Tabs.AbilitiesWeapons';
     this.TABS.sheet[2].label = 'CF.CharacterSheet.Biography';
   }
+
+  async _preparePartContext(partId, context) {
+    context = await super._preparePartContext(partId, context);
+
+    if ('informations' === partId) {
+      context.levelsList = CONFIG.CF.npcLevels;
+    }
+
+    return context;
+  }
 }

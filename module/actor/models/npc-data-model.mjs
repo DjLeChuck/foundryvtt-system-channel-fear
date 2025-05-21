@@ -1,4 +1,5 @@
 import BaseDataModel from './base-data-model.mjs';
+import { CF } from '../../helpers/config.mjs';
 
 export default class NpcDataModel extends BaseDataModel {
   static defineSchema() {
@@ -13,7 +14,7 @@ export default class NpcDataModel extends BaseDataModel {
       }),
       level: new fields.StringField({
         required: true,
-        choices: ['weak', 'medium', 'strong', 'unbeatable'],
+        choices: CF.npcLevels,
         initial: 'weak',
       }),
     };
@@ -22,13 +23,10 @@ export default class NpcDataModel extends BaseDataModel {
   prepareDerivedData() {
     super.prepareDerivedData();
 
-    // @todo À revoir
-    // if (this.system.abilities) {
-    //   const abilitiesPoints = CONFIG.CF.npcAbilitiesPoints[this.system.level];
-    //
-    //   for (const k of Object.keys(this.system.abilities)) {
-    //     this.system.abilities[k] = abilitiesPoints;
-    //   }
-    // }
+    const abilitiesPoints = CONFIG.CF.npcAbilitiesPoints[this.level];
+
+    for (const k of Object.keys(this.abilities)) {
+      this.abilities[k] = abilitiesPoints;
+    }
   }
 }
