@@ -13,13 +13,13 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
-    "@foundryvtt/foundryvtt-cli": "^1.0.2",
-    "@rollup/plugin-commonjs": "^25.0.7",
-    "@rollup/plugin-node-resolve": "^15.2.3",
-    "autoprefixer": "^10.4.19",
-    "postcss": "^8.4.38",
-    "rollup": "^4.16.4",
-    "rollup-plugin-sass": "^1.12.22"
+    "@foundryvtt/foundryvtt-cli": "^1.1.0",
+    "@rollup/plugin-commonjs": "^28.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "rollup": "^4.41.0",
+    "rollup-plugin-sass": "^1.15.2"
   },
   "volta": {
     "node": "18.17.1",
