@@ -11,18 +11,26 @@ body {
   content: url("../images/logo.webp");
 }
 
-.editable {
-  .rollable {
-    &:hover,
-    &:focus {
-      color: #000;
-      text-shadow: 0 0 10px red;
-      cursor: pointer;
-    }
+button.rollable {
+  border: none;
+  background: var(--c-black);
+  border-radius: 0;
 
-    #context-menu {
-      text-shadow: none;
+  &.reroll {
+    &:hover, &:focus {
+      color: var(--c-black);
     }
+  }
+}
+
+.rollable {
+  &:hover, &:focus {
+    text-shadow: 0 0 10px red;
+    cursor: pointer;
+  }
+
+  #context-menu {
+    text-shadow: none;
   }
 }
 

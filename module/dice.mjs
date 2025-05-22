@@ -1,3 +1,5 @@
+const { api, fields, handlebars: { renderTemplate }, ux } = foundry.applications;
+
 export async function abilityCheck({ ability, label, actor }) {
   const {
     difficulty,
@@ -193,57 +195,100 @@ async function _rollNoRoll({ title, actor, difficulty, weapon }) {
   _createChatMessage(actor, null, chatContent, CONST.CHAT_MESSAGE_STYLES.OTHER);
 }
 
-function _createChatMessage(actor, rollResult, content, type = null) {
+function _createChatMessage(actor, rollResult, content, style = null) {
   const data = {
     content,
-    user: game.user.id,
+    user: game.user,
     speaker: ChatMessage.getSpeaker({ actor }),
     rolls: [rollResult],
     sound: CONFIG.sounds.dice,
   };
 
-  if (null !== type) {
-    data.type = type;
+  if (null !== style) {
+    data.style = style;
   }
 
-  return ChatMessage.create(data);
+  foundry.documents.ChatMessage.implementation.applyRollMode(data, 'roll');
+  return foundry.documents.ChatMessage.implementation.create(data);
 }
 
 async function _getCheckOptions(title, currentActorResource) {
-  let resourceChoices;
+  const resourceChoices = [];
   if (0 < currentActorResource) {
-    resourceChoices = [...Array(currentActorResource + 1).keys()];
-    resourceChoices = Object.assign({}, ...resourceChoices.map((e, i) => ({ [e]: resourceChoices[i] })));
+    for (let i = 0; i <= currentActorResource; i++) {
+      resourceChoices.push({
+        label: i,
+        value: i,
+      });
+    }
   }
 
-  const html = await renderTemplate('systems/channel-fear/templates/partials/roll/roll-dialog.hbs', {
-    resourceChoices,
+  const difficultyGroup = fields.createFormGroup({
+    rootId: 'difficulty',
+    input: fields.createSelectInput({
+      name: 'difficulty',
+      options: [
+        {
+          label: game.i18n.localize('CF.Rolls.Dialog.Difficulty1'),
+          value: '1',
+        }, {
+          label: game.i18n.localize('CF.Rolls.Dialog.Difficulty2'),
+          value: '2',
+        }, {
+          label: game.i18n.localize('CF.Rolls.Dialog.Difficulty3'),
+          value: '3',
+        }, {
+          label: game.i18n.localize('CF.Rolls.Dialog.Difficulty4'),
+          value: '4',
+        },
+      ],
+    }),
+    label: game.i18n.localize('CF.Rolls.Dialog.Difficulty'),
+  });
+
+  let content = difficultyGroup.outerHTML;
+
+  if (resourceChoices.length) {
+    const resourcesGroup = fields.createFormGroup({
+      rootId: 'resources',
+      input: fields.createSelectInput({
+        options: resourceChoices,
+        name: 'resources',
+      }),
+      label: game.i18n.localize('CF.Rolls.Dialog.ResourcesToUse'),
+    });
+
+    content += ` ${resourcesGroup.outerHTML}`;
+  }
+
+  const data = await api.DialogV2.wait({
+    content,
+    window: { title: game.i18n.localize(title) },
+    buttons: [
+      {
+        action: 'roll',
+        label: 'CF.Global.RollDice',
+        icon: 'fas fa-dice-d6',
+        callback: (_event, button) => new ux.FormDataExtended(button.form).object,
+      }, {
+        label: 'CF.Global.Cancel',
+        icon: 'fas fa-times',
+        default: true,
+      },
+    ],
   });
 
   return new Promise(resolve => {
-    new Dialog({
-      title: game.i18n.localize(title),
-      content: html,
-      buttons: {
-        roll: {
-          icon: '<i class="fas fa-dice"></i>',
-          label: game.i18n.localize('CF.Global.RollDice'),
-          callback: html => resolve(_processAbilityCheckOptions(html[0].querySelector('form'))),
-        },
-        close: {
-          icon: '<i class="fas fa-times"></i>',
-          label: game.i18n.localize('CF.Global.Cancel'),
-        },
-      },
-      default: 'close',
-    }).render(true);
+    if (data) {
+      resolve(_processAbilityCheckOptions(data));
+    }
   });
 }
 
-function _processAbilityCheckOptions(form) {
+function _processAbilityCheckOptions({ difficulty, resources = '' }) {
   return {
-    difficulty: parseInt(form.difficulty.value, 10),
-    resources: parseInt(form.resources ? form.resources.value : '', 10),
+    difficulty: parseInt(difficulty, 10),
+    resources: parseInt(resources, 10),
   };
 }
 

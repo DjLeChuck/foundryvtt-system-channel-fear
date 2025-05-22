@@ -3,7 +3,6 @@ import '../scss/channel-fear.scss';
 import * as actor from './actor/_module.mjs';
 import { ChannelFearItem } from './item/documents/item.mjs';
 // import { ChannelFearItemSheet } from './item/sheets/item-sheet.mjs';
-import { preloadHandlebarsTemplates } from './helpers/templates.mjs';
 import { registerSettings } from './helpers/settings.mjs';
 import { CF } from './helpers/config.mjs';
 import * as Chat from './chat.mjs';
@@ -52,7 +51,6 @@ Hooks.on('init', function () {
 
   registerHandlebarsHelper();
   registerSettings();
-  // preloadHandlebarsTemplates();
 });
 
 Hooks.once('ready', async function () {
@@ -65,7 +63,7 @@ Hooks.once('babel.init', (babele) => {
   }
 });
 
-Hooks.on('renderChatMessage', (app, html, data) => {
+Hooks.on('renderChatMessageHTML', (app, html) => {
   Chat.addChatListeners(html);
   Chat.hideActionsButtons(html);
 });

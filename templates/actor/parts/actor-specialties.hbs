@@ -4,7 +4,7 @@
 
     {{#if editable}}
       <button class="item-control add-btn" title="{{localize "CF.CharacterSheet.Specialties.Add"}}"
-         data-type="specialty" data-action="itemCreate">
+              data-type="specialty" data-action="itemCreate">
         <i class="fas fa-plus"></i>
       </button>
     {{/if}}
@@ -24,7 +24,13 @@
     <div class="block-content-inner">
       <ul>
         {{#each specialties as |specialty key|}}
-          <li class="specialty item flexrow flex-group-left rollable" data-item-id="{{specialty._id}}">
+          <li class="specialty item flexrow flex-group-left">
+            <div>
+              <button class="rollable" data-action="roll" data-item-id="{{specialty._id}}"
+                      data-label="{{specialty.name}}">
+                <i class="fas fa-dice-d6"></i>
+              </button>
+            </div>
             <div class="specialty-name"><p>{{specialty.name}}</p></div>
             <div class="linked-ability">
               ({{localize (lookup @root.abilitiesList specialty.system.ability)}})

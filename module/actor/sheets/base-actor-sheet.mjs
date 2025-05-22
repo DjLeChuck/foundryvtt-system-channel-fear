@@ -1,3 +1,5 @@
+import * as Dice from '../../dice.mjs';
+
 const { api, sheets, ux } = foundry.applications;
 
 export default class BaseActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorSheetV2) {
@@ -10,6 +12,7 @@ export default class BaseActorSheet extends api.HandlebarsApplicationMixin(sheet
     },
     actions: {
       itemCreate: BaseActorSheet.#onItemCreate,
+      roll: BaseActorSheet.#onRoll,
     },
     actor: {
       type: undefined, // Defined by subclass
@@ -117,6 +120,26 @@ export default class BaseActorSheet extends api.HandlebarsApplicationMixin(sheet
     });
   }
 
+  async _onRender(context, options) {
+    await super._onRender(context, options);
+
+    if (!this.isEditable) {
+      return;
+    }
+
+    // Autosize textearea
+    this.element.querySelectorAll('textarea.autosize').forEach((t) => {
+      if ('' !== t.value) {
+        t.style.height = t.scrollHeight + 'px';
+        t.style.overflowY = 'hidden';
+      }
+
+      t.addEventListener('input', () => {
+        t.style.height = t.scrollHeight + 'px';
+      });
+    });
+  }
+
   /**
    * @returns {Record<string, Record<string, ApplicationTab>>}
    */
@@ -143,23 +166,25 @@ export default class BaseActorSheet extends api.HandlebarsApplicationMixin(sheet
     await cls.createDialog({ type: event.target.dataset.type }, { parent: this.document, pack: this.document.pack });
   }
 
-  async #addItem(e) {
-    e.preventDefault();
+  static async #onRoll(event) {
+    const element = event.target;
+    const { ability, label, itemId } = element.dataset;
 
-    const header = e.currentTarget;
-    const type = header.dataset.type;
-    const data = foundry.utils.duplicate(header.dataset);
-    const name = game.i18n.format('CF.Global.NewItem', {
-      type: game.i18n.localize(`TYPES.Item.${type.toLowerCase()}`).toLowerCase(),
-    });
-    const itemData = {
-      name: name,
-      type: type,
-      data: data,
-    };
-    delete itemData.data['type'];
+    if (ability) {
+      await Dice.abilityCheck({
+        ability,
+        label,
+        actor: this.actor,
+      });
+    }
 
-    await Item.create(itemData, { parent: this.actor });
+    if (itemId) {
+      const item = this.actor.items.get(itemId);
+
+      if (item) {
+        await item.roll();
+      }
+    }
   }
 
   #prepareItems() {

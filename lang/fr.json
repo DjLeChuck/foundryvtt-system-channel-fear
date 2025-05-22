@@ -13,7 +13,7 @@
     },
     "Warnings": {
       "MacroOnlyForOwnedItem": "Vous pouvez seulement créer des macros pour les objets que vous possédez",
-      "MacroItemNotFound": "Impossible de trouver l'objet {name}. Essayez de supprimer puis recréer cette macro."
+      "MacroItemNotFound": "Impossible de trouver l’objet {name}. Essayez de supprimer puis recréer cette macro."
     },
     "Abilities": {
       "Act": "Agir",
@@ -21,7 +21,7 @@
       "Bea": "Endurer",
       "For": "Forcer",
       "Per": "Percevoir",
-      "Imp": "S'imposer",
+      "Imp": "S’imposer",
       "Knh": "Savoir-faire",
       "Fig": "Se battre",
       "Sel": "Se contrôler",
@@ -139,21 +139,21 @@
         "ResourcesToUse": "Points de ressources à utiliser"
       },
       "AbilityCheck": {
-        "Title": "Jet d'aptitude",
+        "Title": "Jet d’aptitude",
         "Card": {
-          "Title": "Jet d'aptitude : {name}"
+          "Title": "Jet d’aptitude : {name}"
         }
       },
       "SpecialtyCheck": {
-        "Title": "Jet de spécialté",
+        "Title": "Jet de spécialité",
         "Card": {
           "Title": "Jet de spécialité : {name}"
         }
       },
       "WeaponCheck": {
-        "Title": "Jet d'arme",
+        "Title": "Jet d’arme",
         "Card": {
-          "Title": "Jet d'arme : {name}"
+          "Title": "Jet d’arme : {name}"
         }
       },
       "Damages": {

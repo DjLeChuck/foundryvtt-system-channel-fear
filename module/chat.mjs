@@ -1,12 +1,20 @@
 import * as Dice from './dice.mjs';
 
+/**
+ * @param {HTMLElement} html
+ */
 export function addChatListeners(html) {
-  html.find('.reroll').on('click', _handleReroll);
-  html.find('.use-weapon').on('click', _handleWeaponDamages);
+  html.querySelectorAll('.reroll').forEach(
+    (el) => el.addEventListener('click', _handleReroll),
+  );
+
+  html.querySelectorAll('.use-weapon').forEach(
+    (el) => el.addEventListener('click', _handleWeaponDamages),
+  );
 }
 
 export function hideActionsButtons(html) {
-  const actionsContainer = html[0].querySelector('.channel-fear.chat-actions');
+  const actionsContainer = html.querySelector('.channel-fear.chat-actions');
   if (!actionsContainer) {
     return;
   }
