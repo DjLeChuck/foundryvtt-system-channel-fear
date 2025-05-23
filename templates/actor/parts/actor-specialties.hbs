@@ -24,13 +24,8 @@
     <div class="block-content-inner">
       <ul>
         {{#each specialties as |specialty key|}}
-          <li class="specialty item flexrow flex-group-left">
-            <div>
-              <button class="rollable" data-action="roll" data-item-id="{{specialty._id}}"
-                      data-label="{{specialty.name}}">
-                <i class="fas fa-dice-d6"></i>
-              </button>
-            </div>
+          <li class="specialty item flexrow flex-group-left rollable draggable"
+            {{#if ../actor.isOwner}}data-action="roll" data-item-id="{{specialty._id}}"{{/if}}>
             <div class="specialty-name"><p>{{specialty.name}}</p></div>
             <div class="linked-ability">
               ({{localize (lookup @root.abilitiesList specialty.system.ability)}})

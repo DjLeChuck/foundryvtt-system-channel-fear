@@ -167,7 +167,8 @@ export default class BaseActorSheet extends api.HandlebarsApplicationMixin(sheet
   }
 
   static async #onRoll(event) {
-    const element = event.target;
+    const target = event.target;
+    const element = target.dataset?.action ? target : target.closest('[data-action]');
     const { ability, label, itemId } = element.dataset;
 
     if (ability) {

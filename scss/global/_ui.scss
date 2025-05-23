@@ -16,7 +16,7 @@ button.rollable {
   background: var(--c-black);
   border-radius: 0;
 
-  &.reroll {
+  &.reroll, &.use-weapon {
     &:hover, &:focus {
       color: var(--c-black);
     }

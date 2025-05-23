@@ -15,10 +15,12 @@
             <label for="system.abilities.{{key}}">
               {{localize (lookup ../abilitiesList key)}}
             </label>
-            <button class="rollable" data-action="roll" data-ability="{{ability}}"
-                    data-label="{{localize (lookup ../abilitiesList key)}}">
-              <i class="fas fa-dice-d6"></i>
-            </button>
+            {{#if ../actor.isOwner}}
+              <button class="rollable" data-action="roll" data-ability="{{ability}}"
+                      data-label="{{localize (lookup ../abilitiesList key)}}">
+                <i class="fas fa-dice-d6"></i>
+              </button>
+            {{/if}}
           </div>
         {{/each}}
 

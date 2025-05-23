@@ -53,9 +53,7 @@ Hooks.on('init', function () {
   registerSettings();
 });
 
-Hooks.once('ready', async function () {
-  Hooks.on('hotbarDrop', (bar, data, slot) => createItemMacro(data, slot));
-});
+Hooks.on('hotbarDrop', (bar, data, slot) => createDocMacro(data, slot));
 
 Hooks.once('babel.init', (babele) => {
   if ('fr' !== game.i18n.lang) {
@@ -68,7 +66,7 @@ Hooks.on('renderChatMessageHTML', (app, html) => {
   Chat.hideActionsButtons(html);
 });
 
-function createItemMacro(data, slot) {
+function createDocMacro(data, slot) {
   if (data.type !== 'Item') {
     return;
   }
@@ -82,7 +80,7 @@ function createItemMacro(data, slot) {
 
     // Create the macro command using the uuid.
     const command = `game.channelfear.rollItemMacro("${data.uuid}");`;
-    let macro = game.macros.find(m => (m.name === item.name) && (m.command === command));
+    let macro = game.macros.find((m) => m.name === item.name && m.command === command);
     if (!macro) {
       macro = await Macro.create({
         name: item.name,
@@ -105,8 +103,9 @@ function rollItemMacro(itemUuid) {
     type: 'Item',
     uuid: itemUuid,
   };
+
   // Load the item from the uuid.
-  Item.fromDropData(dropData).then(item => {
+  Item.fromDropData(dropData).then((item) => {
     // Determine if the item loaded and if it's an owned item.
     if (!item || !item.parent) {
       const name = item?.name ?? itemUuid;
