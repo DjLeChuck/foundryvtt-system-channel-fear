@@ -1,8 +1,7 @@
 import '../scss/channel-fear.scss';
 
 import * as actor from './actor/_module.mjs';
-import { ChannelFearItem } from './item/documents/item.mjs';
-// import { ChannelFearItemSheet } from './item/sheets/item-sheet.mjs';
+import * as item from './item/_module.mjs';
 import { registerSettings } from './helpers/settings.mjs';
 import { CF } from './helpers/config.mjs';
 import * as Chat from './chat.mjs';
@@ -17,9 +16,11 @@ Hooks.on('init', function () {
 
   CONFIG.CF = CF;
 
-  CONFIG.Item.documentClass = ChannelFearItem;
   CONFIG.Actor.dataModels.character = actor.models.CharacterDataModel;
   CONFIG.Actor.dataModels.npc = actor.models.NpcDataModel;
+  CONFIG.Item.dataModels.specialty = item.models.SpecialtyDataModel;
+  CONFIG.Item.dataModels.weapon = item.models.WeaponDataModel;
+  CONFIG.Item.dataModels.basic = item.models.BasicDataModel;
 
   CONFIG.fontDefinitions['MuseoSlab'] = {
     editor: true,
@@ -47,7 +48,18 @@ Hooks.on('init', function () {
     makeDefault: true,
   });
   sheets.unregisterSheet(Item, 'core', foundry.appv1.sheets.ItemSheet);
-  // sheets.registerSheet(Item, CONFIG.CF.SYSTEM_ID, ChannelFearItemSheet, { makeDefault: true });
+  sheets.registerSheet(Item, CONFIG.CF.SYSTEM_ID, item.sheets.BasicItemSheet, {
+    types: ['basic'],
+    makeDefault: true,
+  });
+  sheets.registerSheet(Item, CONFIG.CF.SYSTEM_ID, item.sheets.SpecialtyItemSheet, {
+    types: ['specialty'],
+    makeDefault: true,
+  });
+  sheets.registerSheet(Item, CONFIG.CF.SYSTEM_ID, item.sheets.WeaponItemSheet, {
+    types: ['weapon'],
+    makeDefault: true,
+  });
 
   registerHandlebarsHelper();
   registerSettings();

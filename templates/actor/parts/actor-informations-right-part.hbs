@@ -9,7 +9,8 @@
       </div>
 
       <div class="block-content-inner u-relative">
-        {{formInput systemFields.attributes.fields.health name="system.attributes.health" classes="attribute-input" value=source.system.attributes.health}}
+        <input type="number" name="system.attributes.health" value="{{source.system.attributes.health}}" min="0"
+               max="6" step="1" class="attribute-input">
 
         <ul class="small-info">
           <li>

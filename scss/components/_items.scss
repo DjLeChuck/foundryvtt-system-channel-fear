@@ -1,7 +1,41 @@
 &.item {
-  min-height: 440px;
-
   .window-content {
     @include blue-to-gray-gradient;
+
+    .sheet-header {
+      h1 {
+        margin: 0;
+
+        input {
+          color: var(--c-black);
+          font-size: 28px;
+          height: 48px;
+          line-height: 48px;
+          margin: 8px 2%;
+          width: 96%;
+          font-weight: normal;
+          border: 1px solid var(--color-border);
+        }
+      }
+
+      .image {
+        flex: 0 0 64px;
+        height: 64px;
+        margin-right: 6px;
+      }
+    }
+
+    h3 {
+      font-weight: normal;
+      color: var(--c-dark);
+    }
+
+    .form-body {
+      gap: 10px;
+    }
+
+    .margin {
+      margin-top: 10px;
+    }
   }
 }

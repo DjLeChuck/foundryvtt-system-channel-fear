@@ -1,2 +1,2 @@
-export default class BaseActor extends Actor {
+export default class BaseItem extends Item {
 }

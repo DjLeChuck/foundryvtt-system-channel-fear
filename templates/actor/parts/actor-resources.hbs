@@ -8,7 +8,8 @@
     </div>
 
     <div class="block-content-inner u-relative">
-      {{formInput systemFields.attributes.fields.resource name="system.attributes.resource" classes="attribute-input" value=source.system.attributes.resource}}
+      <input type="number" name="system.attributes.resource" value="{{source.system.attributes.resource}}" min="0"
+             max="6" step="1" class="attribute-input">
 
       <p class="small-info">
         <strong>{{localize "CF.CharacterSheet.Resource.SuccessTitle"}}</strong><br />

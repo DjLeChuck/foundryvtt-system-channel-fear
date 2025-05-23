@@ -5,7 +5,6 @@ const { api, sheets, ux } = foundry.applications;
 export default class BaseActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorSheetV2) {
   static DEFAULT_OPTIONS = {
     classes: ['channel-fear', 'actor'],
-    tag: 'form',
     position: {
       width: 800,
       height: 630,

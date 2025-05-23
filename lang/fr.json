@@ -3,7 +3,7 @@
   "TYPES.Actor.npc": "Second rôle",
   "TYPES.Item.specialty": "Spécialité",
   "TYPES.Item.weapon": "Arme",
-  "TYPES.Item.item": "Objet",
+  "TYPES.Item.basic": "Objet",
   "CF": {
     "Settings": {
       "HideProfileImage": {

@@ -1,7 +1,7 @@
 export default class BaseDataModel extends foundry.abstract.TypeDataModel {
   static defineSchema() {
     const fields = foundry.data.fields;
-    const abilityOptions = { required: true, min: 0, max: 6, initial: 1 };
+    const abilityOptions = { required: true, integer: true, min: 0, max: 6, initial: 1 };
 
     return {
       keywords: new fields.StringField(),

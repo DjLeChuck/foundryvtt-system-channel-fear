@@ -15,29 +15,13 @@
     "types": [
       "specialty",
       "weapon",
-      "item"
+      "basic"
     ],
-    "templates": {
-      "with_ability_reroll": {
-        "ability": "act",
-        "reroll": 0
-      }
-    },
-    "specialty": {
-      "templates": [
-        "with_ability_reroll"
-      ],
-      "reroll": 1
-    },
-    "weapon": {
-      "templates": [
-        "with_ability_reroll"
-      ],
-      "ability": "fig",
-      "category": 1
-    },
-    "item": {
-      "description": ""
-    }
+    "htmlFields": [
+      "description"
+    ],
+    "specialty": {},
+    "weapon": {},
+    "basic": {}
   }
 }

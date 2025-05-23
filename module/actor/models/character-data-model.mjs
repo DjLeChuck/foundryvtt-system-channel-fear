@@ -14,9 +14,9 @@ export default class CharacterDataModel extends BaseDataModel {
         profdef: new fields.StringField(),
       }),
       attributes: new fields.SchemaField({
-        health: new fields.NumberField({ required: true, min: 0, max: 6, initial: 6 }),
-        resource: new fields.NumberField({ required: true, min: 0, max: 6, initial: 6 }),
-        evolution: new fields.NumberField({ required: true, min: 0, initial: 0 }),
+        health: new fields.NumberField({ required: true, integer: true, min: 0, max: 6, initial: 6 }),
+        resource: new fields.NumberField({ required: true, integer: true, min: 0, max: 6, initial: 6 }),
+        evolution: new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 }),
       }),
     };
   }
