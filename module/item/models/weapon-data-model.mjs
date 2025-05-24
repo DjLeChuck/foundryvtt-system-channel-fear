@@ -9,13 +9,22 @@ export default class WeaponDataModel extends foundry.abstract.TypeDataModel {
         required: true,
         label: 'CF.Global.Ability',
         initial: 'fig',
-        choices: CF.weaponsAbilities,
+        choices: {
+          'fig': 'CF.Abilities.Fig',
+          'aim': 'CF.Abilities.Aim',
+        },
       }),
       category: new fields.NumberField({
         required: true,
         label: 'CF.Global.Category',
         initial: 1,
-        choices: CF.weaponsCategories,
+        choices: {
+          1: 'CF.Weapons.Categories.BareHands',
+          2: 'CF.Weapons.Categories.VeryLight',
+          3: 'CF.Weapons.Categories.Light',
+          4: 'CF.Weapons.Categories.Medium',
+          5: 'CF.Weapons.Categories.Heavy',
+        },
       }),
       reroll: new fields.NumberField({
         required: true,

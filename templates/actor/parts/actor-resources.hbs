@@ -1,5 +1,9 @@
 <div class="stacked-block resource-block">
-  <h1 class="block-title">{{localize "CF.CharacterSheet.Resource.Title"}}</h1>
+  <h1 class="block-title">
+    <label for="char-resource-{{actor.id}}">
+      {{localize systemFields.attributes.fields.resource.label}}
+    </label>
+  </h1>
 
   <div class="block-content">
     <div class="block-header-info small-info">
@@ -8,8 +12,10 @@
     </div>
 
     <div class="block-content-inner u-relative">
-      <input type="number" name="system.attributes.resource" value="{{source.system.attributes.resource}}" min="0"
-             max="6" step="1" class="attribute-input">
+      <input type="number" name="system.attributes.resource" id="char-resource-{{actor.id}}"
+             value="{{source.system.attributes.resource}}" min="{{systemFields.attributes.fields.resource.min}}"
+             max="{{systemFields.attributes.fields.resource.max}}"
+             step="{{systemFields.attributes.fields.resource.step}}" class="attribute-input">
 
       <p class="small-info">
         <strong>{{localize "CF.CharacterSheet.Resource.SuccessTitle"}}</strong><br />

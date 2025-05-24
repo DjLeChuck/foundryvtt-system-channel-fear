@@ -1,6 +1,10 @@
 <div class="flexcol stacked-blocks">
   <div class="stacked-block health-block">
-    <h1 class="block-title">{{localize "CF.CharacterSheet.Health.Title"}}</h1>
+    <h1 class="block-title">
+      <label for="char-health-{{actor.id}}">
+        {{localize systemFields.attributes.fields.health.label}}
+      </label>
+    </h1>
 
     <div class="block-content">
       <div class="block-header-info small-info">
@@ -9,8 +13,10 @@
       </div>
 
       <div class="block-content-inner u-relative">
-        <input type="number" name="system.attributes.health" value="{{source.system.attributes.health}}" min="0"
-               max="6" step="1" class="attribute-input">
+        <input type="number" name="system.attributes.health" id="char-health-{{actor.id}}"
+               value="{{source.system.attributes.health}}" min="{{systemFields.attributes.fields.health.min}}"
+               max="{{systemFields.attributes.fields.health.max}}"
+               step="{{systemFields.attributes.fields.health.step}}" class="attribute-input">
 
         <ul class="small-info">
           <li>

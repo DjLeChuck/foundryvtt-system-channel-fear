@@ -1,31 +1,35 @@
-<div class="tab basic-informations flexrow {{tabs.informations.id}} {{tabs.informations.cssClass}}" data-group="sheet" data-tab="informations">
+<div class="tab basic-informations flexrow {{tabs.informations.id}} {{tabs.informations.cssClass}}" data-group="sheet"
+     data-tab="informations">
   <div class="flex2">
     <div class="flexrow block-content-inner">
       <div class="flex2 informations-container">
         <p class="flex flex-group-center">
-          <label for="char-name">{{localize "CF.CharacterSheet.Identity"}}</label>
-          {{formInput fields.name id="char-name" value=source.name}}
+          <label for="char-name-{{actor.id}}">{{localize "CF.CharacterSheet.Identity"}}</label>
+          {{formInput fields.name id=(concat "char-name-" actor.id) value=source.name}}
         </p>
         {{#if isNpc}}
           <p>
-            <label for="char-level">{{localize "CF.NpcSheet.Level.Label"}}</label>
-            {{formInput systemFields.level id="char-level" value=source.system.level localize=true}}
+            <label for="char-level-{{actor.id}}">{{localize systemFields.level.label}}</label>
+            {{formInput systemFields.level id=(concat "char-level-" actori.id) value=source.system.level localize=true}}
           </p>
         {{/if}}
         {{#unless isNpc}}
           <p class="flex flex-group-center">
-            <label for="char-profile">{{localize "CF.CharacterSheet.Profile"}}</label>
-            {{formInput systemFields.info.fields.profile id="char-profile" name="system.info.profile" value=source.system.info.profile}}
+            <label for="char-profile-{{actor.id}}">{{localize systemFields.info.fields.profile.label}}</label>
+            {{formInput systemFields.info.fields.profile id=(concat "char-profile-" actor.id) name="system.info.profile"
+                        value=source.system.info.profile}}
           </p>
         {{/unless}}
         <p>
-          <label for="char-keywords">{{localize "CF.CharacterSheet.Keywords"}}</label>
-          <textarea name="system.keywords" id="char-keywords" rows="4" class="autosize">{{source.system.keywords}}</textarea>
+          <label for="char-keywords-{{actor.id}}">{{localize systemFields.keywords.label}}</label>
+          {{formInput systemFields.keywords elementType="textarea" rows=4 id=(concat "char-keywords-" actor.id)
+                      classes="autosize" value=source.system.keywords}}
         </p>
         {{#unless isNpc}}
           <p>
-            <label for="char-profdef">{{localize "CF.CharacterSheet.ProfDef"}}</label>
-            <textarea name="system.info.profdef" id="char-profdef" rows="6" class="autosize">{{source.system.info.profdef}}</textarea>
+            <label for="char-profdef-{{actor.id}}">{{localize systemFields.info.fields.profdef.label}}</label>
+            {{formInput systemFields.info.fields.profdef elementType="textarea" rows=6
+                        id=(concat "char-profdef-" actor.id) classes="autosize" value=source.system.info.profdef}}
           </p>
         {{/unless}}
       </div>

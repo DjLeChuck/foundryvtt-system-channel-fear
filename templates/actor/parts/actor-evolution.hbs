@@ -1,5 +1,9 @@
 <div class="evolution-block">
-  <h1 class="block-title">{{localize "CF.CharacterSheet.Evolution.Title"}}</h1>
+  <h1 class="block-title">
+    <label for="char-evolution-{{actor.id}}">
+      {{localize systemFields.attributes.fields.evolution.label}}
+    </label>
+  </h1>
 
   <div class="block-content">
     <div class="block-header-info small-info">
@@ -7,7 +11,9 @@
     </div>
 
     <div class="block-content-inner u-relative">
-      {{formInput systemFields.attributes.fields.evolution name="system.attributes.evolution" classes="attribute-input" value=source.system.attributes.evolution}}
+      {{formInput systemFields.attributes.fields.evolution id=(concat "char-evolution" actor.id)
+                  name="system.attributes.evolution" classes="attribute-input"
+                  value=source.system.attributes.evolution}}
 
       <ul class="small-info">
         <li>

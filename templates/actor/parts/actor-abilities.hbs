@@ -10,14 +10,14 @@
       <div class="block-content-inner">
         {{#each system.abilities as |ability key|}}
           <div class="ability flex flex-group-center">
-            <input type="text" id="system.abilities.{{key}}" name="system.abilities.{{key}}"
-                   value="{{ability}}" />
-            <label for="system.abilities.{{key}}">
-              {{localize (lookup ../abilitiesList key)}}
+            <input type="text" id="char-abil-{{key}}-{{../actor.id}}" name="system.abilities.{{key}}"
+                   value="{{ability}}" {{#if ../isNpc}}disabled{{/if}} />
+            <label for="char-abil-{{key}}-{{../actor.id}}">
+              {{#with (lookup ../systemFields.abilities.fields key)~}}{{localize label}}{{/with}}
             </label>
             {{#if ../actor.isOwner}}
               <button class="rollable" data-action="roll" data-ability="{{ability}}"
-                      data-label="{{localize (lookup ../abilitiesList key)}}">
+                      data-label="{{#with (lookup ../systemFields.abilities.fields key)~}}{{localize label}}{{/with}}">
                 <i class="fas fa-dice-d6"></i>
               </button>
             {{/if}}

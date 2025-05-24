@@ -24,11 +24,11 @@
     <div class="block-content-inner">
       <ul>
         {{#each specialties as |specialty key|}}
-          <li class="specialty item flexrow flex-group-left rollable draggable"
+          <li class="specialty item flexrow flex-group-left {{#if ../actor.isOwner}}rollable draggable{{/if}}"
             {{#if ../actor.isOwner}}data-action="roll" data-item-id="{{specialty._id}}"{{/if}}>
             <div class="specialty-name"><p>{{specialty.name}}</p></div>
             <div class="linked-ability">
-              ({{localize (lookup @root.abilitiesList specialty.system.ability)}})
+              ({{#with (lookup ../systemFields.abilities.fields specialty.system.ability)~}}{{localize label}}{{/with}})
             </div>
             <div class="reroll flexrow">
               <div>

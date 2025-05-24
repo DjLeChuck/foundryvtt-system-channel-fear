@@ -70,8 +70,6 @@ export default class BaseActorSheet extends api.HandlebarsApplicationMixin(sheet
     this.PARTS = foundry.utils.deepClone(this.PARTS);
     this.PARTS.bio.template = `systems/channel-fear/templates/actor/parts/actor-${actor.type}-bio.hbs`;
 
-    this.TABS = foundry.utils.deepClone(this.TABS);
-
     this.DEFAULT_OPTIONS.classes = [actor.type];
   }
 
@@ -88,7 +86,6 @@ export default class BaseActorSheet extends api.HandlebarsApplicationMixin(sheet
       systemFields: this.document.system.schema.fields,
       source: this.document.toObject(),
       isNpc: 'npc' === this.document.type,
-      abilitiesList: CONFIG.CF.abilities,
       editable: this.isEditable,
       ...this.#prepareItems(),
     };
@@ -152,6 +149,7 @@ export default class BaseActorSheet extends api.HandlebarsApplicationMixin(sheet
       }
       tabs[groupId] = group;
     }
+
     return tabs;
   }
 
@@ -197,7 +195,7 @@ export default class BaseActorSheet extends api.HandlebarsApplicationMixin(sheet
         specialties.push(i);
       } else if ('weapon' === i.type) {
         weapons.push(i);
-      } else if ('item' === i.type) {
+      } else if ('basic' === i.type) {
         items.push(i);
       }
     }

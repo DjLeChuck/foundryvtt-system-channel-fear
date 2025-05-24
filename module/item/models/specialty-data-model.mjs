@@ -1,5 +1,3 @@
-import { CF } from '../../helpers/config.mjs';
-
 export default class SpecialtyDataModel extends foundry.abstract.TypeDataModel {
   static defineSchema() {
     const fields = foundry.data.fields;
@@ -9,7 +7,18 @@ export default class SpecialtyDataModel extends foundry.abstract.TypeDataModel {
         required: true,
         label: 'CF.Global.Ability',
         initial: 'act',
-        choices: CF.abilities,
+        choices: {
+          'act': 'CF.Abilities.Act',
+          'kno': 'CF.Abilities.Kno',
+          'bea': 'CF.Abilities.Bea',
+          'for': 'CF.Abilities.For',
+          'per': 'CF.Abilities.Per',
+          'imp': 'CF.Abilities.Imp',
+          'knh': 'CF.Abilities.Knh',
+          'fig': 'CF.Abilities.Fig',
+          'sel': 'CF.Abilities.Sel',
+          'aim': 'CF.Abilities.Aim',
+        },
       }),
       reroll: new fields.NumberField({
         required: true,

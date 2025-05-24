@@ -2,6 +2,7 @@ import '../scss/channel-fear.scss';
 
 import * as actor from './actor/_module.mjs';
 import * as item from './item/_module.mjs';
+import * as documents from './documents/_module.mjs';
 import { registerSettings } from './helpers/settings.mjs';
 import { CF } from './helpers/config.mjs';
 import * as Chat from './chat.mjs';
@@ -16,8 +17,10 @@ Hooks.on('init', function () {
 
   CONFIG.CF = CF;
 
+  CONFIG.Actor.documentClass = documents.ChannelFearActor;
   CONFIG.Actor.dataModels.character = actor.models.CharacterDataModel;
   CONFIG.Actor.dataModels.npc = actor.models.NpcDataModel;
+  CONFIG.Item.documentClass = documents.ChannelFearItem;
   CONFIG.Item.dataModels.specialty = item.models.SpecialtyDataModel;
   CONFIG.Item.dataModels.weapon = item.models.WeaponDataModel;
   CONFIG.Item.dataModels.basic = item.models.BasicDataModel;

@@ -1,9 +1,9 @@
 <section>
   <div class="flexrow form-body">
-    {{formGroup systemFields.ability rootId="ability" localize=true value=source.system.ability}}
-    {{formGroup systemFields.category rootId="category" localize=true value=source.system.category}}
+    {{formGroup systemFields.ability rootId=item.id localize=true value=source.system.ability}}
+    {{formGroup systemFields.category rootId=item.id localize=true value=source.system.category}}
   </div>
   <div class="flexrow form-body margin">
-    {{formGroup systemFields.reroll rootId="reroll" localize=true value=source.system.reroll}}
+    {{formGroup systemFields.reroll rootId=item.id localize=true value=source.system.reroll}}
   </div>
 </section>
