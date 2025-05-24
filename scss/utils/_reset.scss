@@ -15,6 +15,17 @@ input[type="text"], input[type="number"], input[type="password"], input[type="da
   user-select: text;
 }
 
+select {
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--c-tan);
+  color: var(--color-text-dark-primary);
+  border-radius: 3px;
+  padding: 0 3px;
+  text-overflow: ellipsis;
+  font-family: inherit;
+  font-size: inherit;
+}
+
 textarea {
   width: 100%;
   min-height: 50px;
@@ -51,4 +62,11 @@ nav.tabs {
 
 .flexcol > * {
   flex: 1;
+}
+
+.flexrow, .flexcol {
+  & > .flex0 {
+    display: block;
+    flex: 0;
+  }
 }

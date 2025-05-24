@@ -1,5 +1,5 @@
 <div class="flexcol stacked-blocks">
-  <div class="stacked-block health-block">
+  <div class="{{#unless isNpc}}flex0 {{/unless}}stacked-block health-block">
     <h1 class="block-title">
       <label for="char-health-{{actor.id}}">
         {{localize systemFields.attributes.fields.health.label}}

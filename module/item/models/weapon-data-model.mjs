@@ -29,9 +29,14 @@ export default class WeaponDataModel extends foundry.abstract.TypeDataModel {
       reroll: new fields.NumberField({
         required: true,
         label: 'CF.Global.Rerolls',
+        hint: 'CF.Weapons.RerollHint',
         integer: true,
         initial: 0,
         min: 0,
+        max: CF.weaponMaxReroll,
+      }),
+      allMightHitReroll: new fields.NumberField({
+        integer: true,
         max: CF.weaponMaxReroll,
       }),
     };

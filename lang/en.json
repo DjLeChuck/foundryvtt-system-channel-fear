@@ -58,7 +58,8 @@
         "Light": "Light",
         "Medium": "Medium",
         "Heavy": "Heavy"
-      }
+      },
+      "RerollHint": "A weapon that is not at least of \"Medium\" category cannot have more than one reroll."
     },
     "CharacterSheet": {
       "Yno": "A {serial} created by Anthony “Yno” Combrexelle",
