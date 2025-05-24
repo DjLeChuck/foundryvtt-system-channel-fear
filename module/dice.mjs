@@ -84,7 +84,6 @@ export async function useWeapon({ actor, dice, label, reroll }) {
       label,
       usable,
     },
-    title: game.i18n.format('CF.Rolls.Damages.Card.Title', { name: label }),
     tooltip: await rollResult.getTooltip(),
     total: rollResult.total,
   };
@@ -96,7 +95,12 @@ export async function useWeapon({ actor, dice, label, reroll }) {
 
   const chatContent = await renderTemplate('systems/channel-fear/templates/partials/roll/roll-card.hbs', templateData);
 
-  await _createChatMessage(actor, rollResult, chatContent);
+  await _createChatMessage(
+    actor,
+    rollResult,
+    game.i18n.format('CF.Rolls.Damages.Card.Title', { name: label }),
+    chatContent,
+  );
 }
 
 async function _doCheck({ actor, bonus, dice, difficulty, reroll, title, usedResources, weapon }) {
@@ -164,11 +168,15 @@ async function _doCheck({ actor, bonus, dice, difficulty, reroll, title, usedRes
     hardFailure,
     hardSuccess,
     success,
-    title,
     weapon,
   });
 
-  await _createChatMessage(actor, rollResult, chatContent);
+  await _createChatMessage(
+    actor,
+    rollResult,
+    `${title} (${game.i18n.format('CF.Rolls.Difficulty', { difficulty })})`,
+    chatContent,
+  );
   await _handleRollResult({ actor, canReroll: rerollData.can, difficulty, rollResult, usedResources });
 }
 
@@ -188,16 +196,22 @@ async function _rollNoRoll({ title, actor, difficulty, weapon }) {
     success: true,
     total: difficulty,
     difficulty,
-    title,
     weapon,
   });
 
-  _createChatMessage(actor, null, chatContent, CONST.CHAT_MESSAGE_STYLES.OTHER);
+  _createChatMessage(
+    actor,
+    null,
+    `${title} (${game.i18n.format('CF.Rolls.Difficulty', { difficulty })})`,
+    chatContent,
+    CONST.CHAT_MESSAGE_STYLES.OTHER,
+  );
 }
 
-function _createChatMessage(actor, rollResult, content, style = null) {
+function _createChatMessage(actor, rollResult, flavor, content, style = null) {
   const data = {
     content,
+    flavor,
     user: game.user,
     speaker: ChatMessage.getSpeaker({ actor }),
     rolls: [rollResult],

@@ -34,12 +34,20 @@ button.rollable {
   }
 }
 
-.dice-roll {
-  .hard-success {
+.chat-message .dice-roll h4.dice-total {
+  &.success {
+    color: green;
+  }
+
+  &.failure {
+    color: red;
+  }
+
+  &.hard-success {
     background-color: rgba(0, 128, 0, .2);
   }
 
-  .hard-failure {
+  &.hard-failure {
     background-color: rgba(255, 0, 0, .2);
   }
 }
