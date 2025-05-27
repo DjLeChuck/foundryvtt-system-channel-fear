@@ -5,7 +5,7 @@
   "version": "#{VERSION}#",
   "compatibility": {
     "minimum": 13,
-    "verified": "13.344"
+    "verified": 13.344
   },
   "flags": {
     "hotReload": {
@@ -96,6 +96,30 @@
       "flags": {}
     }
   ],
+  "documentTypes": {
+    "Actor": {
+      "character": {
+        "htmlFields": [
+          "biography",
+          "notes"
+        ]
+      },
+      "npc": {
+        "htmlFields": [
+          "biography"
+        ]
+      }
+    },
+    "Item": {
+      "basic": {
+        "htmlFields": [
+          "description"
+        ]
+      },
+      "specialty": {},
+      "weapon": {}
+    }
+  },
   "url": "#{URL}#",
   "manifest": "#{MANIFEST}#",
   "download": "#{DOWNLOAD}#",
