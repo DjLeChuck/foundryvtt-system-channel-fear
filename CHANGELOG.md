@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [13.0.0] - 2025-05-27
+
+### Added
+
+- FoundryVTT v13 compatibility
+- Remove the action button from the chat card after clicking on it
+- Automatically create "Fist & cie" weapon on actors
+
 ## [12.0.1] - 2024-07-12
 
 ### Changed
@@ -151,7 +159,9 @@ Dummy version to see if it fix the non apparition on the FoundryVTT list
 
 - First system version
 
-[Unreleased]: https://github.com/DjLeChuck/foundryvtt-system-channel-fear/compare/12.0.1...HEAD
+[Unreleased]: https://github.com/DjLeChuck/foundryvtt-system-channel-fear/compare/13.0.0...HEAD
+
+[13.0.0]: https://github.com/DjLeChuck/foundryvtt-system-channel-fear/compare/13.0.0...12.0.1
 
 [12.0.1]: https://github.com/DjLeChuck/foundryvtt-system-channel-fear/compare/12.0.1...12.0.0
 
