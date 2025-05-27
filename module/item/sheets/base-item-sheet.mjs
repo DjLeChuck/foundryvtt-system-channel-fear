@@ -1,4 +1,4 @@
-const { api, sheets, ux } = foundry.applications;
+const { api, sheets } = foundry.applications;
 
 export default class BaseItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheetV2) {
   static DEFAULT_OPTIONS = {

@@ -1,4 +1,14 @@
 export default class ChannelFearActor extends foundry.documents.Actor {
+  async _onCreate(data, options, userId) {
+    super._onCreate(data, options, userId);
+
+    if (userId !== game.user.id) {
+      return;
+    }
+
+    await this.#addBareHandsWeapon();
+  }
+
   getRollData() {
     const data = foundry.utils.deepClone(super.getRollData());
 
@@ -23,5 +33,17 @@ export default class ChannelFearActor extends foundry.documents.Actor {
         data[k] = v;
       }
     }
+  }
+
+  async #addBareHandsWeapon() {
+    this.createEmbeddedDocuments('Item', [{
+      name: game.i18n.localize('CF.Weapons.FistAndCie'),
+      type: 'weapon',
+      system: {
+        ability: 'fig',
+        reroll: 0,
+        category: 1,
+      },
+    }]);
   }
 }

@@ -59,7 +59,8 @@
         "Medium": "Moyenne",
         "Heavy": "Lourde"
       },
-      "RerollHint": "Une arme qui n’est pas au moins de catégorie « Moyenne » ne peut pas avoir plus d’une relance."
+      "RerollHint": "Une arme qui n’est pas au moins de catégorie « Moyenne » ne peut pas avoir plus d’une relance.",
+      "FistAndCie": "Poing & cie"
     },
     "CharacterSheet": {
       "Yno": "Un {serial} créé par Anthony « Yno » Combrexelle",

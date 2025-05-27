@@ -95,7 +95,7 @@ export default class BaseActorSheet extends api.HandlebarsApplicationMixin(sheet
     context = await super._preparePartContext(partId, context, options);
 
     if ('bio' === partId) {
-      context.enrichedBiography = await ux.TextEditor.enrichHTML(this.actor.system.biography, {
+      context.enrichedBiography = await ux.TextEditor.implementation.enrichHTML(this.actor.system.biography, {
         secrets: this.document.isOwner,
         relativeTo: this.actor,
       });

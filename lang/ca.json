@@ -59,7 +59,8 @@
         "Medium": "Mitjana",
         "Heavy": "Pesada"
       },
-      "RerollHint": "Una arma que no és almenys una categoria \"Mitjana\" no pot tenir més d'una tornar a tirar."
+      "RerollHint": "Una arma que no és almenys una categoria \"Mitjana\" no pot tenir més d'una tornar a tirar.",
+      "FistAndCie": "Fist & cie"
     },
     "CharacterSheet": {
       "Yno": "Un {serial} creat per Anthony “Yno” Combrexelle",

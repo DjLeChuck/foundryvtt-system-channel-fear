@@ -37,7 +37,7 @@ export default class CharacterActorSheet extends BaseActorSheet {
     context = await super._preparePartContext(partId, context);
 
     if ('notes' === partId) {
-      context.enrichedNotes = await ux.TextEditor.enrichHTML(this.actor.system.notes, {
+      context.enrichedNotes = await ux.TextEditor.implementation.enrichHTML(this.actor.system.notes, {
         secrets: this.document.isOwner,
         relativeTo: this.actor,
       });
