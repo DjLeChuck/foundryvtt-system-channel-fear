@@ -11,8 +11,6 @@ export default class SpecialtyItemSheet extends BaseItemSheet {
     },
   };
 
-  static PARTS = foundry.utils.deepClone(super.PARTS);
-
   static {
     this._initializeItemSheetClass();
   }

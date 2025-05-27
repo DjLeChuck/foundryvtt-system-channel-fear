@@ -8,7 +8,9 @@ export default class ChannelFearActor extends foundry.documents.Actor {
   }
 
   _getCharacterRollData(data) {
-    if (this.type !== 'character') return;
+    if (this.type !== 'character') {
+      return;
+    }
 
     if (data.abilities) {
       for (let [k, v] of Object.entries(data.abilities)) {

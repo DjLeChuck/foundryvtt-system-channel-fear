@@ -41,4 +41,22 @@ export default class WeaponDataModel extends foundry.abstract.TypeDataModel {
       }),
     };
   }
+
+  prepareDerivedData() {
+    // Add force reroll
+    if ('fig' === this.ability) {
+      this.allMightHitReroll = this.reroll;
+
+      if (this.parent.actor?.system) {
+        this.allMightHitReroll += (CONFIG.CF.allMightHitReroll[this.parent.actor.system.abilities.for] || 0);
+      }
+
+      this.allMightHitReroll = Math.min(this.allMightHitReroll, CONFIG.CF.weaponMaxReroll);
+    }
+
+    // Ensure weapons lower than category 4 cannot have more than 1 reroll
+    if (4 > this.category) {
+      this.reroll = Math.min(this.reroll, 1);
+    }
+  }
 }

@@ -1,6 +1,6 @@
 const { api, sheets, ux } = foundry.applications;
 
-export default class BaseActorSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheetV2) {
+export default class BaseItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheetV2) {
   static DEFAULT_OPTIONS = {
     classes: ['channel-fear', 'item'],
     position: {
