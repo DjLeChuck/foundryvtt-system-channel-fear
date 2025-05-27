@@ -7,6 +7,10 @@
 @import "global/flex";
 @import "global/ui";
 
+.d-none {
+  display: none;
+}
+
 /* Styles limited to channel-fear sheets */
 .channel-fear {
   @import "utils/reset";

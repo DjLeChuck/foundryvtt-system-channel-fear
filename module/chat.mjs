@@ -13,29 +13,30 @@ export function addChatListeners(html) {
   );
 }
 
-export function hideActionsButtons(html) {
+export function showActionsButtons(html) {
   const actionsContainer = html.querySelector('.channel-fear.chat-actions');
   if (!actionsContainer) {
     return;
   }
 
   const actor = game.actors.get(actionsContainer.dataset.actorId);
-  if (actor && !actor.isOwner) {
-    actionsContainer.style.display = 'none';
+  if (actor && actor.isOwner) {
+    actionsContainer.classList.remove('d-none');
   }
 }
 
 async function _handleReroll(e) {
   e.preventDefault();
 
-  const data = e.currentTarget.dataset;
+  const target = e.currentTarget;
+  const data = target.dataset;
   const actor = await game.actors.get(data.actorId);
 
   if (!actor) {
     return;
   }
 
-  const message = await game.messages.get(e.currentTarget.closest('.chat-message').dataset.messageId);
+  const message = await game.messages.get(target.closest('.chat-message').dataset.messageId);
 
   if (!message) {
     return;
@@ -50,13 +51,15 @@ async function _handleReroll(e) {
     type,
   } = data;
 
-  await Dice.reroll({ actor, available, bonus, difficulty, label, type, usable, message });
+  await _removeActions(message);
+  await Dice.reroll({ actor, available, bonus, difficulty, label, type, usable });
 }
 
 async function _handleWeaponDamages(e) {
   e.preventDefault();
 
-  const data = e.currentTarget.dataset;
+  const target = e.currentTarget;
+  const data = target.dataset;
   const actor = await game.actors.get(data.actorId);
 
   if (!actor) {
@@ -65,5 +68,28 @@ async function _handleWeaponDamages(e) {
 
   const { dice, label, reroll } = data;
 
+  const message = await game.messages.get(target.closest('.chat-message').dataset.messageId);
+  if (message) {
+    await _removeActions(message);
+  }
+
   await Dice.useWeapon({ actor, dice, label, reroll });
+}
+
+async function _removeActions(message) {
+  let content = message.content;
+
+  const tempElement = document.createElement('div');
+  tempElement.innerHTML = content;
+
+  const chatActions = tempElement.querySelector('.chat-actions');
+  if (!chatActions) {
+    return;
+  }
+
+  chatActions.remove();
+
+  await message.update({
+    content: tempElement.innerHTML,
+  });
 }

@@ -78,7 +78,7 @@ Hooks.once('babel.init', (babele) => {
 
 Hooks.on('renderChatMessageHTML', (app, html) => {
   Chat.addChatListeners(html);
-  Chat.hideActionsButtons(html);
+  Chat.showActionsButtons(html);
 });
 
 function createDocMacro(data, slot) {
