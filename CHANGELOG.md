@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [13.0.1] - 2026-02-03
+
 ### Fixed
 
 - Image edition is not persisted
@@ -163,7 +165,9 @@ Dummy version to see if it fix the non apparition on the FoundryVTT list
 
 - First system version
 
-[Unreleased]: https://github.com/DjLeChuck/foundryvtt-system-channel-fear/compare/13.0.0...HEAD
+[Unreleased]: https://github.com/DjLeChuck/foundryvtt-system-channel-fear/compare/13.0.1...HEAD
+
+[13.0.1]: https://github.com/DjLeChuck/foundryvtt-system-channel-fear/compare/13.0.2...13.0.0
 
 [13.0.0]: https://github.com/DjLeChuck/foundryvtt-system-channel-fear/compare/13.0.0...12.0.1
 
