@@ -4,11 +4,13 @@
     "Archie “Bulldog” Grimm": {
       "name": "Archie „Bulldog“ Grimm",
       "keywords": "53 Jahre alt. Kaukasisch. Mittelgroß.\nWeiße Haare. Schwarzer Anzug.\nBeiger Mantel. Finsterer Blick.",
-      "profile": "Ehemaliger Polizist"
+      "profile": "Ehemaliger Polizist",
+      "profdef": "Psychologe: Archie kann 1 Ressourcenpunkt verwenden, um zu durchschauen, ob ihn jemand anlügt oder bewusst Informationen zurückhält."
     },
     "Damien Barnes": {
       "name": "Damien Barnes",
-      "profile": "Exorzist"
+      "profile": "Exorzist",
+      "keywords": "33 Jahre alt. Schwarz. Mittelgroß.\nKurze braune Haare. Ziegenbart. Ringe unter den Augen.\nTrägt eine Soutane. Rosenkranz in der Hand."
     },
     "Elsa Faust": {
       "name": "Elsa Faust",
